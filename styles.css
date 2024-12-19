@@ -76,17 +76,24 @@ li{
   margin: 5rem;
 }
 section + div{
-background-color: rgb(25, 25, 153);
+background-color: rgb(243, 246, 174);
 color: rgb(5, 5, 45);
 padding: 15px;
-width: 150px;
-height: 150px;
+width: 880px;
+height: 880px;
 font-size: 2rem;
 margin: 2rem;
 }
 #theChart {
-  width: 80%;
-  max-width: 600px;
+  width: 600px;
   height: 400px;
-  margin: 0 auto;
+  display: block; /* Ensure it's visible */
+  margin: 0 auto; /* Center it on the page */
+}
+
+
+canvas {
+  display: block;
+  max-width: 100%;
+  height: auto;
 }

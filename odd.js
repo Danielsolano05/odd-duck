@@ -85,7 +85,7 @@ clicks++;
 let likesDuck =event.target.alt;
  for (let i = 0; i < state.allDuckArray.length;i++){
   if (likesDuck=== state.allDuckArray[i].name) {
-    state.allDuckArray[i].clicks++;
+    state.allDuckArray[i].likes++; // change here 
     break;
   }
  }
@@ -105,7 +105,7 @@ function renderResults(){
   ul.innerHTML = '';
   for (let i = 0; i<state.allDuckArray.length; i++){
     let li = document.createElement('li');
-    li.textContent = `${state.allDuckArray[i].name}: ${state.allDuckArray[i].likesDuck} clicks and ${state.allDuckArray[i].views} views.`;
+    li.textContent = `${state.allDuckArray[i].name}: ${state.allDuckArray[i].likes} clicks and ${state.allDuckArray[i].views} views.`;
     ul.appendChild(li);
   }
   resultButton.removeEventListener('click', renderResults);
@@ -128,7 +128,7 @@ const data ={
     label: 'likes',
     data:ducklikes,
     backgroundColor:[
-      'rgba(98, 105, 192, 0.2)'
+      'rgba(53, 63, 204, 0.2)'
     ],
     borderColor: [
       'rgb(147, 163, 28)'
@@ -140,7 +140,7 @@ const data ={
     label:'views',
     data:duckviews,
     backgroundColor: [ 
-      'rgba(255 , 159 , 64 , 0.2)'
+      'rgba(181, 169, 156, 0.2)'
     ],
     borderColor:[
       'rgb(255,159,64)'
@@ -154,12 +154,12 @@ const config ={
   options:{
     scales:{
       y:{
-        beginAtZero:true
+        beginAtZero: true
       }
     }
   },
 };
-let canvasChart = document.getElementById('myChart');
+let canvasChart = document.getElementById('theChart');
 if (!canvasChart) {
   canvasChart = document.createElement('canvas');
   canvasChart.id = 'theChart';
