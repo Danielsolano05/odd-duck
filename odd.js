@@ -168,6 +168,19 @@ if (!canvasChart) {
 new Chart(canvasChart,config);
 }
 
+//local storge will go on line below
+state.openDetail = null;  // Tracks which detail is open
+state.comment = ""; 
+function saveToLocalStorage() {
+  localStorage.setItem('allDuckArray', JSON.stringify(state.allDuckArray));
+}
+function loadStateFromLocalStorage() {
+  const savedState = localStorage.getItem("state");
+  if (savedState) {
+    Object.assign(state, JSON.parse(savedState));
+  }
+}
+
 //executable code 
 let bag = new Duck('bag', './images/bag.jpg');
 let banana = new Duck('banana', './images/banana.jpg');
