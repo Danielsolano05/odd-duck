@@ -180,6 +180,27 @@ function loadStateFromLocalStorage() {
     Object.assign(state, JSON.parse(savedState));
   }
 }
+function initializePageFromState() {
+  if (state.openDetail !== null) {
+    let details = document.getElementsByTagName("details");
+    details[state.openDetail]?.setAttribute("open", "open");
+  }
+  if (state.comment) {
+    let commentBox = document.getElementById("commentBox");
+    commentBox.value = state.comment;
+  }
+}
+let details = document.getElementsByTagName("details");
+for (let i = 0; i < details.length; i++) {
+  details[i].addEventListener("click", function () {
+    if (state.openDetail === i) {
+      state.openDetail = null; // If the same detail is clicked, close it
+    } else {
+      state.openDetail = i;    // Save the index of the open detail
+    }
+    saveStateToLocalStorage();
+  });
+}
 
 //executable code 
 let bag = new Duck('bag', './images/bag.jpg');
@@ -203,6 +224,8 @@ let watercan = new Duck('water-can', './images/water-can.jpg');
 let wineglass = new Duck('wine-glass', './images/wine-glass.jpg');
 state.allDuckArray.push(bag, banana, bathroom, boots, breakfast, bubblegum, chair, cthulhu, dogduck, dragon, pen, petsweep, scissors, shark, sweep, tauntaun, unicorn, watercan, wineglass);
 
+loadStateFromLocalStorage();
+initializePageFromState();
 RenderDuck();
 duckContainer.addEventListener('click', handleDuckClick);
 //console.log(resultButton);
